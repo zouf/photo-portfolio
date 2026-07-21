@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.astro/
+
+# brainstorming session artifacts
+.superpowers/
+
+# never commit image files — they live in Firebase Storage
+*.jpg
+*.jpeg
+*.png
+*.tif
+*.tiff
+*.nef
+*.NEF
+
+# firebase / secrets
+.firebase/
+*-service-account.json
+.env
+.env.*
+.DS_Store

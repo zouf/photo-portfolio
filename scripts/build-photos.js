@@ -75,6 +75,16 @@ async function main() {
   const arg = process.argv.find((a) => a.startsWith('--target=')) ?? '--target=local';
   const target = await loadTarget(arg.split('=')[1]);
 
+  // --limit=N stops after N photos have been *newly* uploaded (already-present
+  // ones don't count), so an interrupted run resumes where it left off. Useful
+  // on a slow connection. A limited run leaves the manifest alone, because a
+  // manifest pointing at objects that aren't uploaded yet would break the site.
+  const limitArg = process.argv.find((a) => a.startsWith('--limit='));
+  const limit = limitArg ? Number(limitArg.split('=')[1]) : Infinity;
+  if (Number.isNaN(limit) || limit <= 0) {
+    throw new Error('--limit must be a positive number');
+  }
+
   await stat(STAGING).catch(() => {
     throw new Error(`Staging folder not found: ${STAGING}`);
   });
@@ -93,12 +103,15 @@ async function main() {
 
   const albums = [];
   const failures = [];
+  let hitLimit = false;
 
   for (const slug of await listAlbums(STAGING)) {
     const albumDir = path.join(STAGING, slug);
     const photos = [];
 
     for (const filename of await listPhotos(albumDir)) {
+      if (hitLimit) break;
+
       const id = path.basename(filename, path.extname(filename));
       try {
         photos.push(await buildPhoto(path.join(albumDir, filename), slug, id, target));
@@ -108,9 +121,20 @@ async function main() {
         failures.push(`${slug}/${id}: ${err.message}`);
         console.error(`  FAIL ${slug}/${id}: ${err.message}`);
       }
+
+      if (target.photosUploaded && target.photosUploaded() >= limit) {
+        hitLimit = true;
+      }
     }
 
     albums.push({ slug, title: albumTitle(slug), photos });
+  }
+
+  if (hitLimit) {
+    console.log(`\nStopped after ${target.photosUploaded()} newly uploaded photo(s) (--limit).`);
+    console.log(`${MANIFEST} left unchanged. Re-run to continue where this left off.`);
+    if (target.summary) console.log(`  ${target.summary()}`);
+    return;
   }
 
   // A partial manifest would silently drop photos from the site, which is worse
@@ -131,6 +155,7 @@ async function main() {
   await writeFile(MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
   const count = albums.reduce((n, a) => n + a.photos.length, 0);
   console.log(`\nWrote ${MANIFEST}: ${albums.length} albums, ${count} photos (target: ${target.name})`);
+  if (target.summary) console.log(`  ${target.summary()}`);
 }
 
 main().catch((err) => {

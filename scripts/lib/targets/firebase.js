@@ -1,7 +1,8 @@
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import admin from 'firebase-admin';
+import { initializeApp, applicationDefault } from 'firebase-admin/app';
+import { getStorage } from 'firebase-admin/storage';
 import { SIZES, generateDerivative } from '../derivatives.js';
 import { contentHash, derivativeName } from '../naming.js';
 
@@ -19,11 +20,15 @@ export function createFirebaseTarget() {
     );
   }
 
-  admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
+  const app = initializeApp({
+    credential: applicationDefault(),
     storageBucket: bucketName,
   });
-  const bucket = admin.storage().bucket();
+  const bucket = getStorage(app).bucket();
+
+  let uploaded = 0;
+  let skipped = 0;
+  let photosUploaded = 0;
 
   // New buckets default to uniform bucket-level access, which disables per-object
   // ACLs — so file.makePublic() throws. Grant public read once at the bucket
@@ -49,12 +54,24 @@ export function createFirebaseTarget() {
 
   // Safe only because object names carry a content hash — see naming.js. A
   // re-edited photo uploads to a new path, so `immutable` never serves stale.
+  //
+  // That same hash makes skipping sound: if the object name is already present,
+  // its bytes are by definition the ones we were about to upload. This keeps
+  // re-runs cheap and makes an interrupted upload resumable.
   async function upload(localPath, objectPath) {
+    const url = `https://storage.googleapis.com/${bucketName}/${objectPath}`;
+    const [exists] = await bucket.file(objectPath).exists();
+    if (exists) {
+      skipped += 1;
+      return url;
+    }
+
     await bucket.upload(localPath, {
       destination: objectPath,
       metadata: { cacheControl: 'public, max-age=31536000, immutable' },
     });
-    return `https://storage.googleapis.com/${bucketName}/${objectPath}`;
+    uploaded += 1;
+    return url;
   }
 
   return {
@@ -72,25 +89,47 @@ export function createFirebaseTarget() {
     },
 
     async put(sourcePath, albumSlug, id) {
+      const hash = await contentHash(sourcePath);
+      const object = (size) => `photos/${albumSlug}/${derivativeName(id, hash, size)}`;
+      const url = (size) => `https://storage.googleapis.com/${bucketName}/${object(size)}`;
+      const urls = { thumb: url('thumb'), med: url('med'), full: url('full') };
+
+      // Resizing is the slow part, so check before doing any of it. All three
+      // present means this exact photo is already fully uploaded.
+      const present = await Promise.all(
+        ['thumb', 'med', 'full'].map((s) =>
+          bucket.file(object(s)).exists().then(([e]) => e)
+        )
+      );
+      if (present.every(Boolean)) {
+        skipped += 3;
+        return urls;
+      }
+
       const work = await mkdtemp(path.join(tmpdir(), 'photo-'));
       try {
-        const hash = await contentHash(sourcePath);
         const thumbPath = path.join(work, 'thumb.jpg');
         const medPath = path.join(work, 'med.jpg');
 
         await generateDerivative(sourcePath, SIZES.thumb, thumbPath);
         await generateDerivative(sourcePath, SIZES.med, medPath);
 
-        const object = (size) => `photos/${albumSlug}/${derivativeName(id, hash, size)}`;
-
-        return {
-          thumb: await upload(thumbPath, object('thumb')),
-          med: await upload(medPath, object('med')),
-          full: await upload(sourcePath, object('full')),
-        };
+        await upload(thumbPath, object('thumb'));
+        await upload(medPath, object('med'));
+        await upload(sourcePath, object('full'));
+        photosUploaded += 1;
+        return urls;
       } finally {
         await rm(work, { recursive: true, force: true });
       }
+    },
+
+    photosUploaded() {
+      return photosUploaded;
+    },
+
+    summary() {
+      return `${uploaded} object(s) uploaded, ${skipped} already present`;
     },
   };
 }

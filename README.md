@@ -22,6 +22,19 @@ export FIREBASE_STORAGE_BUCKET=<project-id>.firebasestorage.app
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 ```
 
+### Uploading on a slow connection
+
+`--limit=N` stops after N photos have been *newly* uploaded:
+
+```bash
+npm run photos:upload -- --limit=5
+```
+
+Already-uploaded photos don't count toward the limit, so re-running picks up
+where the last run stopped. A limited run leaves `photos.json` untouched — a
+manifest pointing at objects that aren't uploaded yet would break the site.
+Run without `--limit` once to write the manifest.
+
 ## Local development
 
 ```bash

@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About — Zouf" description="About Matt Zouf, photographer.">
+  <div class="about">
+    <h1 class="eyebrow">About</h1>
+    <p>
+      I photograph the places I end up when I'm out on a bike or on foot — desert
+      ridgelines, city mornings, and a lake in the Kawarthas I keep coming back
+      to.
+    </p>
+    <p>Shot on a Nikon Z5 II and a Z50 II.</p>
+    <p class="contact">
+      <a href="mailto:mattzouf@gmail.com">mattzouf@gmail.com</a>
+    </p>
+  </div>
+</Base>
+
+<style>
+  .about {
+    max-width: 34rem;
+    padding-bottom: 2rem;
+  }
+
+  h1 {
+    margin: 0 0 2rem;
+  }
+
+  p {
+    line-height: 1.75;
+    margin: 0 0 1.25rem;
+  }
+
+  .contact a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: border-color 0.15s;
+  }
+
+  .contact a:hover {
+    border-bottom-color: var(--text);
+  }
+</style>

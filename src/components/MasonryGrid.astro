@@ -1,0 +1,69 @@
+---
+const { photos } = Astro.props;
+---
+
+<div class="masonry">
+  {
+    photos.map((photo, i) => (
+      <button
+        class="tile"
+        data-index={i}
+        style={`aspect-ratio: ${photo.width} / ${photo.height}`}
+        aria-label={photo.caption ?? `View photo ${i + 1} of ${photos.length}`}
+      >
+        <img src={photo.thumb} alt={photo.caption ?? ''} loading="lazy" decoding="async" />
+      </button>
+    ))
+  }
+</div>
+
+<style>
+  /* CSS columns give true masonry with no JavaScript and no layout thrash. */
+  .masonry {
+    columns: 3;
+    column-gap: 0.75rem;
+  }
+
+  @media (max-width: 900px) {
+    .masonry {
+      columns: 2;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .masonry {
+      columns: 1;
+    }
+  }
+
+  /* aspect-ratio comes from the manifest, so each tile reserves its exact space
+     before the image loads and nothing jumps. */
+  .tile {
+    display: block;
+    width: 100%;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    border: 0;
+    background: var(--bg-raised);
+    cursor: zoom-in;
+    break-inside: avoid;
+    overflow: hidden;
+  }
+
+  .tile img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.25s ease;
+  }
+
+  .tile:hover img {
+    opacity: 0.86;
+  }
+
+  .tile:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+  }
+</style>

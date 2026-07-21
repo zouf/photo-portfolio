@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import MasonryGrid from '../../components/MasonryGrid.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import manifest from '../../../photos.json';
+
+export function getStaticPaths() {
+  return manifest.albums.map((album) => ({
+    params: { slug: album.slug },
+    props: { album },
+  }));
+}
+
+const { album } = Astro.props;
+---
+
+<Base title={`${album.title} — Zouf`}>
+  <h1 class="eyebrow">{album.title}</h1>
+  <MasonryGrid photos={album.photos} />
+  <Lightbox photos={album.photos} />
+</Base>
+
+<style>
+  h1 {
+    margin: 0 0 2rem;
+  }
+</style>

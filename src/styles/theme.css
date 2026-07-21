@@ -1,0 +1,47 @@
+:root {
+  --bg: #f4efe8;
+  --bg-raised: #e8e0d4;
+  --text: #2b2620;
+  --text-muted: #6b6155;
+  --rule: #ddd3c6;
+  --measure: 72rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--text);
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.eyebrow {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}

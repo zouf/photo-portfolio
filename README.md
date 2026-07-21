@@ -1,7 +1,10 @@
-# zouf.photo
+# photo-portfolio
 
 Personal photography portfolio. Astro static site on Firebase Hosting, with the
 image files in Firebase Storage.
+
+Live on the default Firebase subdomain (`<project-id>.web.app`). To attach a
+custom domain later, set it in the Firebase console and export `SITE_URL`.
 
 ## Adding photos
 
@@ -15,7 +18,7 @@ image files in Firebase Storage.
 Uploading needs two environment variables:
 
 ```bash
-export FIREBASE_STORAGE_BUCKET=zouf-photo.firebasestorage.app
+export FIREBASE_STORAGE_BUCKET=<project-id>.firebasestorage.app
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
 ```
 

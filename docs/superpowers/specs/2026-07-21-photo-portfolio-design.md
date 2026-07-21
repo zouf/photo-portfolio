@@ -15,7 +15,7 @@ sales, no client booking, no blog.
 | Site framework | Astro (static output) |
 | Code hosting | GitHub — `github.com/zouf/photo-portfolio` |
 | Site hosting | Firebase Hosting |
-| Domain | `zouf.photo` |
+| Domain | Firebase default (`<project-id>.web.app`); `zouf.photo` deferred |
 | Image hosting | Firebase Storage (Google Cloud Storage bucket) |
 | Image processing | `sharp` (local, in the upload script) |
 | EXIF extraction | Node EXIF library (e.g. `exifr`), local |
@@ -205,17 +205,19 @@ manifest and code move through git.
 
 ## Domain
 
-`zouf.photo` — chosen over concept names (`firstlight.photo`, `outandback.photo`)
-and over `mattzouf.com`. The handle-based name stays accurate regardless of what
-the work becomes, and the `.photo` TLD completes the phrase so the whole domain is
-two syllables.
+**Deferred.** The site launches on the free Firebase subdomain
+(`<project-id>.web.app`). `astro.config.mjs` reads `SITE_URL` with that as the
+default, so attaching a real domain later is an env var, not a code change.
 
-Verified unregistered as of 2026-07-21 (no NS, A, or SOA records). `zouf.com` is
-parked by a reseller and would be an aftermarket purchase.
+`zouf.photo` remains the intended choice when the time comes — chosen over concept
+names (`firstlight.photo`, `outandback.photo`) and over `mattzouf.com`, because a
+handle-based name stays accurate regardless of what the work becomes. Verified
+unregistered as of 2026-07-21 (no NS, A, or SOA records). `zouf.com` is parked by
+a reseller and would be an aftermarket purchase.
 
-Firebase Hosting provides custom domains and SSL certificates at no cost.
-Connecting it is: add the domain in the Firebase console, then set the two DNS
-records it provides at the registrar.
+Firebase Hosting provides custom domains and SSL certificates at no cost. Adding
+one is: set the domain in the Firebase console, then the two DNS records it
+provides at the registrar.
 
 ## Known setup tasks
 

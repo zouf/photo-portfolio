@@ -9,7 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node --test tests/",
+    "test": "node --test 'tests/**/*.test.js'",
     "photos:local": "node scripts/build-photos.js --target=local",
     "photos:upload": "node scripts/build-photos.js --target=firebase"
   },

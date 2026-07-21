@@ -15,6 +15,7 @@ sales, no client booking, no blog.
 | Site framework | Astro (static output) |
 | Code hosting | GitHub — `github.com/zouf/photo-portfolio` |
 | Site hosting | Firebase Hosting |
+| Domain | `zouf.photo` |
 | Image hosting | Firebase Storage (Google Cloud Storage bucket) |
 | Image processing | `sharp` (local, in the upload script) |
 | EXIF extraction | Node EXIF library (e.g. `exifr`), local |
@@ -202,6 +203,20 @@ manifest and code move through git.
   widths, lightbox open/close and next/prev, and that portrait and landscape photos
   both sit correctly in the masonry flow.
 
+## Domain
+
+`zouf.photo` — chosen over concept names (`firstlight.photo`, `outandback.photo`)
+and over `mattzouf.com`. The handle-based name stays accurate regardless of what
+the work becomes, and the `.photo` TLD completes the phrase so the whole domain is
+two syllables.
+
+Verified unregistered as of 2026-07-21 (no NS, A, or SOA records). `zouf.com` is
+parked by a reseller and would be an aftermarket purchase.
+
+Firebase Hosting provides custom domains and SSL certificates at no cost.
+Connecting it is: add the domain in the Firebase console, then set the two DNS
+records it provides at the registrar.
+
 ## Known setup tasks
 
 - Create the empty `photo-portfolio` repo on GitHub. The `gh` CLI is not installed
@@ -210,6 +225,8 @@ manifest and code move through git.
 - Create the Firebase project and enable Storage (requires the billing account,
   which the user has).
 - Configure the Storage bucket for public read on the `photos/` prefix.
+- Register `zouf.photo` and point it at Firebase Hosting. Registration requires
+  entering payment details, so this is the user's to do.
 
 ## Out of scope
 

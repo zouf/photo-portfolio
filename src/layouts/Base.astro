@@ -1,6 +1,7 @@
 ---
 import '../styles/theme.css';
 import manifest from '../../photos.json';
+import PasswordGate from '../components/PasswordGate.astro';
 
 const { title, description } = Astro.props;
 const path = Astro.url.pathname;
@@ -8,15 +9,25 @@ const albums = manifest.albums.map((a) => ({ slug: a.slug, title: a.title }));
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="locked">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- Hide content until the gate unlocks. Inline so it applies before paint,
+         with no flash of the gallery. Kept minimal so a JS-less visitor who
+         removes the class still can't see anything the gate would hide. -->
+    <style is:inline>
+      html.locked body > *:not(#password-gate) {
+        display: none !important;
+      }
+    </style>
   </head>
   <body>
+    <PasswordGate />
     <header class="wrap site-header">
       <a href="/" class="wordmark">Zouf</a>
       <nav>

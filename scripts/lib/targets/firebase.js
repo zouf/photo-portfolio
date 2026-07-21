@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import admin from 'firebase-admin';
 import { SIZES, generateDerivative } from '../derivatives.js';
+import { contentHash, derivativeName } from '../naming.js';
 
 export function createFirebaseTarget() {
   const bucketName = process.env.FIREBASE_STORAGE_BUCKET;
@@ -24,8 +25,8 @@ export function createFirebaseTarget() {
   });
   const bucket = admin.storage().bucket();
 
-  // Derivatives are content-addressed by name and never change once written, so
-  // they can be cached indefinitely.
+  // Safe only because object names carry a content hash — see naming.js. A
+  // re-edited photo uploads to a new path, so `immutable` never serves stale.
   async function upload(localPath, objectPath) {
     await bucket.upload(localPath, {
       destination: objectPath,
@@ -41,16 +42,19 @@ export function createFirebaseTarget() {
     async put(sourcePath, albumSlug, id) {
       const work = await mkdtemp(path.join(tmpdir(), 'photo-'));
       try {
+        const hash = await contentHash(sourcePath);
         const thumbPath = path.join(work, 'thumb.jpg');
         const medPath = path.join(work, 'med.jpg');
 
         await generateDerivative(sourcePath, SIZES.thumb, thumbPath);
         await generateDerivative(sourcePath, SIZES.med, medPath);
 
+        const object = (size) => `photos/${albumSlug}/${derivativeName(id, hash, size)}`;
+
         return {
-          thumb: await upload(thumbPath, `photos/${albumSlug}/${id}_thumb.jpg`),
-          med: await upload(medPath, `photos/${albumSlug}/${id}_med.jpg`),
-          full: await upload(sourcePath, `photos/${albumSlug}/${id}_full.jpg`),
+          thumb: await upload(thumbPath, object('thumb')),
+          med: await upload(medPath, object('med')),
+          full: await upload(sourcePath, object('full')),
         };
       } finally {
         await rm(work, { recursive: true, force: true });

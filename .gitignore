@@ -20,3 +20,8 @@ dist/
 .env
 .env.*
 .DS_Store
+
+# firebase cli logs
+firebase-debug.log
+*firebase-debug*.log
+.firebase/

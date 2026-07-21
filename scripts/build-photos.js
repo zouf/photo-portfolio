@@ -44,6 +44,17 @@ async function listPhotos(albumDir) {
   return entries.filter((f) => /\.jpe?g$/i.test(f) && !f.startsWith('.')).sort();
 }
 
+// Photos only count if they're inside an album folder. Dropping them at the
+// staging root is an easy mistake, and silently ignoring them means the site
+// just doesn't show photos the user thinks they added.
+async function findStrayPhotos(root) {
+  const entries = await readdir(root, { withFileTypes: true });
+  return entries
+    .filter((e) => e.isFile() && /\.jpe?g$/i.test(e.name) && !e.name.startsWith('.'))
+    .map((e) => e.name)
+    .sort();
+}
+
 async function buildPhoto(sourcePath, slug, id, target) {
   const raw = await exifr.parse(sourcePath, { pick: EXIF_FIELDS });
   const exif = normalizeExif(raw);
@@ -67,6 +78,14 @@ async function main() {
   await stat(STAGING).catch(() => {
     throw new Error(`Staging folder not found: ${STAGING}`);
   });
+
+  const strays = await findStrayPhotos(STAGING);
+  if (strays.length > 0) {
+    console.error(`\n${strays.length} photo(s) sit at the staging root and belong to no album:`);
+    for (const name of strays) console.error(`  - ${name}`);
+    console.error(`\nMove them into a subfolder of ${STAGING} — the folder name becomes the album.`);
+    process.exit(1);
+  }
 
   const albums = [];
   const failures = [];

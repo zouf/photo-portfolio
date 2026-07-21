@@ -25,6 +25,28 @@ export function createFirebaseTarget() {
   });
   const bucket = admin.storage().bucket();
 
+  // New buckets default to uniform bucket-level access, which disables per-object
+  // ACLs — so file.makePublic() throws. Grant public read once at the bucket
+  // level instead. Idempotent: re-running finds the binding already present.
+  async function ensurePublicRead() {
+    const [policy] = await bucket.iam.getPolicy({ requestedPolicyVersion: 3 });
+    const ROLE = 'roles/storage.objectViewer';
+
+    const existing = policy.bindings.find(
+      (b) => b.role === ROLE && !b.condition
+    );
+    if (existing?.members.includes('allUsers')) return 'already public';
+
+    if (existing) {
+      existing.members.push('allUsers');
+    } else {
+      policy.bindings.push({ role: ROLE, members: ['allUsers'] });
+    }
+
+    await bucket.iam.setPolicy(policy);
+    return 'granted public read';
+  }
+
   // Safe only because object names carry a content hash — see naming.js. A
   // re-edited photo uploads to a new path, so `immutable` never serves stale.
   async function upload(localPath, objectPath) {
@@ -32,12 +54,22 @@ export function createFirebaseTarget() {
       destination: objectPath,
       metadata: { cacheControl: 'public, max-age=31536000, immutable' },
     });
-    await bucket.file(objectPath).makePublic();
     return `https://storage.googleapis.com/${bucketName}/${objectPath}`;
   }
 
   return {
     name: 'firebase',
+
+    async init() {
+      const [exists] = await bucket.exists();
+      if (!exists) {
+        throw new Error(
+          `Bucket "${bucketName}" does not exist. Enable Storage in the Firebase ` +
+            `console (requires the Blaze plan), then re-run.`
+        );
+      }
+      console.log(`  bucket ${bucketName}: ${await ensurePublicRead()}`);
+    },
 
     async put(sourcePath, albumSlug, id) {
       const work = await mkdtemp(path.join(tmpdir(), 'photo-'));

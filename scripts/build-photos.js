@@ -79,6 +79,10 @@ async function main() {
     throw new Error(`Staging folder not found: ${STAGING}`);
   });
 
+  // Targets that need one-time setup (bucket checks, IAM) do it here, so the
+  // run fails immediately rather than after resizing the first photo.
+  if (target.init) await target.init();
+
   const strays = await findStrayPhotos(STAGING);
   if (strays.length > 0) {
     console.error(`\n${strays.length} photo(s) sit at the staging root and belong to no album:`);

@@ -4,14 +4,16 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "headers": [
       {
-        "source": "**/*.@(jpg|jpeg|png|webp|avif|svg)",
+        "comment": "Hashed Astro assets never change under a given name — cache hard.",
+        "source": "/_astro/**",
         "headers": [
           { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
         ]
       },
       {
-        "source": "**/*.@(html)",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+        "comment": "Everything else (HTML at clean URLs, favicon) must revalidate every load, so a redeploy reaches users immediately instead of sitting behind an hour-long cache. A previous rule targeted **/*.html, which clean URLs like / and /about never match, so pages were silently cached for an hour.",
+        "source": "**",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
       }
     ]
   }

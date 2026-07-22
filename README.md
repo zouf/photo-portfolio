@@ -3,8 +3,11 @@
 Personal photography portfolio. Astro static site on Firebase Hosting, with the
 image files in Firebase Storage.
 
-Live on the default Firebase subdomain (`<project-id>.web.app`). To attach a
-custom domain later, set it in the Firebase console and export `SITE_URL`.
+**Live:** https://photo-portfolio-88316.web.app (behind a shared password gate).
+
+On the default Firebase subdomain for now. To attach a custom domain later
+(`zouf.photo` is the intended one), set it in the Firebase console and export
+`SITE_URL`.
 
 ## Adding photos
 

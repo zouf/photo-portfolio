@@ -265,6 +265,120 @@
       ]
     },
     {
+      "slug": "new-york",
+      "title": "New York",
+      "photos": [
+        {
+          "id": "DSC_1804",
+          "thumb": "/photos/new-york/DSC_1804_59605bf1_thumb.jpg",
+          "med": "/photos/new-york/DSC_1804_59605bf1_med.jpg",
+          "full": "/photos/new-york/DSC_1804_59605bf1_full.jpg",
+          "width": 6048,
+          "height": 4032,
+          "caption": null,
+          "exif": {
+            "camera": "NIKON Z5 II",
+            "lens": "NIKKOR Z 24-120mm f/4 S",
+            "aperture": "f/4",
+            "shutter": "1/125",
+            "iso": 720,
+            "focalLength": "120mm",
+            "capturedAt": "2026-04-13T18:56:02"
+          }
+        },
+        {
+          "id": "DSC_1818",
+          "thumb": "/photos/new-york/DSC_1818_44d1f2e5_thumb.jpg",
+          "med": "/photos/new-york/DSC_1818_44d1f2e5_med.jpg",
+          "full": "/photos/new-york/DSC_1818_44d1f2e5_full.jpg",
+          "width": 6048,
+          "height": 4032,
+          "caption": null,
+          "exif": {
+            "camera": "NIKON Z5 II",
+            "lens": "NIKKOR Z 26mm f/2.8",
+            "aperture": "f/16",
+            "shutter": "1/10",
+            "iso": 100,
+            "focalLength": "26mm",
+            "capturedAt": "2026-04-19T17:29:11"
+          }
+        },
+        {
+          "id": "DSC_1960",
+          "thumb": "/photos/new-york/DSC_1960_2968215e_thumb.jpg",
+          "med": "/photos/new-york/DSC_1960_2968215e_med.jpg",
+          "full": "/photos/new-york/DSC_1960_2968215e_full.jpg",
+          "width": 6048,
+          "height": 4032,
+          "caption": null,
+          "exif": {
+            "camera": "NIKON Z5 II",
+            "lens": "NIKKOR Z 24-120mm f/4 S",
+            "aperture": "f/5.6",
+            "shutter": "1/500",
+            "iso": 100,
+            "focalLength": "120mm",
+            "capturedAt": "2026-05-10T11:14:06"
+          }
+        },
+        {
+          "id": "DSC_1961",
+          "thumb": "/photos/new-york/DSC_1961_9f162de8_thumb.jpg",
+          "med": "/photos/new-york/DSC_1961_9f162de8_med.jpg",
+          "full": "/photos/new-york/DSC_1961_9f162de8_full.jpg",
+          "width": 6048,
+          "height": 4032,
+          "caption": null,
+          "exif": {
+            "camera": "NIKON Z5 II",
+            "lens": "NIKKOR Z 24-120mm f/4 S",
+            "aperture": "f/5.6",
+            "shutter": "1/500",
+            "iso": 100,
+            "focalLength": "120mm",
+            "capturedAt": "2026-05-10T11:14:38"
+          }
+        },
+        {
+          "id": "DSC_1962",
+          "thumb": "/photos/new-york/DSC_1962_3584f2d3_thumb.jpg",
+          "med": "/photos/new-york/DSC_1962_3584f2d3_med.jpg",
+          "full": "/photos/new-york/DSC_1962_3584f2d3_full.jpg",
+          "width": 6048,
+          "height": 4032,
+          "caption": null,
+          "exif": {
+            "camera": "NIKON Z5 II",
+            "lens": "NIKKOR Z 24-120mm f/4 S",
+            "aperture": "f/5.6",
+            "shutter": "1/500",
+            "iso": 100,
+            "focalLength": "65mm",
+            "capturedAt": "2026-05-10T11:15:08"
+          }
+        },
+        {
+          "id": "DSC_1966",
+          "thumb": "/photos/new-york/DSC_1966_dadeac62_thumb.jpg",
+          "med": "/photos/new-york/DSC_1966_dadeac62_med.jpg",
+          "full": "/photos/new-york/DSC_1966_dadeac62_full.jpg",
+          "width": 6048,
+          "height": 4032,
+          "caption": null,
+          "exif": {
+            "camera": "NIKON Z5 II",
+            "lens": "NIKKOR Z 24-120mm f/4 S",
+            "aperture": "f/10",
+            "shutter": "1/400",
+            "iso": 100,
+            "focalLength": "34mm",
+            "capturedAt": "2026-05-10T11:19:48"
+          }
+        }
+      ]
+    },
+    {
       "slug": "stoney-lake",
       "title": "Stoney Lake",
       "photos": [

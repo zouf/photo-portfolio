@@ -23,24 +23,6 @@
           }
         },
         {
-          "id": "DSC_1486",
-          "thumb": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/arizona/DSC_1486_672d518f_thumb.jpg",
-          "med": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/arizona/DSC_1486_672d518f_med.jpg",
-          "full": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/arizona/DSC_1486_672d518f_full.jpg",
-          "width": 6048,
-          "height": 4032,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z5 II",
-            "lens": "TAMRON 16-30mm F2.8 A064 Z",
-            "aperture": "f/6.3",
-            "shutter": "1/320",
-            "iso": 100,
-            "focalLength": "16mm",
-            "capturedAt": "2026-04-05T18:59:08"
-          }
-        },
-        {
           "id": "DSC_1490",
           "thumb": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/arizona/DSC_1490_797d3187_thumb.jpg",
           "med": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/arizona/DSC_1490_797d3187_med.jpg",
@@ -263,42 +245,6 @@
           }
         },
         {
-          "id": "DSC_2567",
-          "thumb": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/budapest/DSC_2567_9533a4be_thumb.jpg",
-          "med": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/budapest/DSC_2567_9533a4be_med.jpg",
-          "full": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/budapest/DSC_2567_9533a4be_full.jpg",
-          "width": 6048,
-          "height": 4032,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z5 II",
-            "lens": "NIKKOR Z 24-120mm f/4 S",
-            "aperture": "f/5.6",
-            "shutter": "1/250",
-            "iso": 160,
-            "focalLength": "120mm",
-            "capturedAt": "2026-06-03T16:13:10"
-          }
-        },
-        {
-          "id": "DSC_2575",
-          "thumb": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/budapest/DSC_2575_a536350e_thumb.jpg",
-          "med": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/budapest/DSC_2575_a536350e_med.jpg",
-          "full": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/budapest/DSC_2575_a536350e_full.jpg",
-          "width": 2653,
-          "height": 3979,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z5 II",
-            "lens": "NIKKOR Z 24-120mm f/4 S",
-            "aperture": "f/6.3",
-            "shutter": "1/320",
-            "iso": 100,
-            "focalLength": "120mm",
-            "capturedAt": "2026-06-04T11:06:31"
-          }
-        },
-        {
           "id": "DSC_2623",
           "thumb": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/budapest/DSC_2623_09c77bd7_thumb.jpg",
           "med": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/budapest/DSC_2623_09c77bd7_med.jpg",
@@ -323,24 +269,6 @@
       "title": "Stoney Lake",
       "photos": [
         {
-          "id": "DSC_2652",
-          "thumb": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_2652_8591d78a_thumb.jpg",
-          "med": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_2652_8591d78a_med.jpg",
-          "full": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_2652_8591d78a_full.jpg",
-          "width": 3181,
-          "height": 2121,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z50 II",
-            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
-            "aperture": "f/6.3",
-            "shutter": "1/640",
-            "iso": 100,
-            "focalLength": "400mm",
-            "capturedAt": "2026-07-12T18:04:55"
-          }
-        },
-        {
           "id": "DSC_2776",
           "thumb": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_2776_a15f4426_thumb.jpg",
           "med": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_2776_a15f4426_med.jpg",
@@ -356,24 +284,6 @@
             "iso": 2000,
             "focalLength": "362mm",
             "capturedAt": "2026-07-14T19:55:22"
-          }
-        },
-        {
-          "id": "DSC_2794",
-          "thumb": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_2794_7fc9cc66_thumb.jpg",
-          "med": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_2794_7fc9cc66_med.jpg",
-          "full": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_2794_7fc9cc66_full.jpg",
-          "width": 4037,
-          "height": 2691,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z50 II",
-            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
-            "aperture": "f/6.3",
-            "shutter": "1/1600",
-            "iso": 10000,
-            "focalLength": "384mm",
-            "capturedAt": "2026-07-14T19:57:47"
           }
         },
         {
@@ -410,24 +320,6 @@
             "iso": 400,
             "focalLength": "400mm",
             "capturedAt": "2026-07-19T10:05:05"
-          }
-        },
-        {
-          "id": "DSC_3332",
-          "thumb": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_3332_819cb93d_thumb.jpg",
-          "med": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_3332_819cb93d_med.jpg",
-          "full": "https://storage.googleapis.com/photo-portfolio-88316.firebasestorage.app/photos/stoney-lake/DSC_3332_819cb93d_full.jpg",
-          "width": 6048,
-          "height": 4032,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z5 II",
-            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
-            "aperture": "f/6.3",
-            "shutter": "1/400",
-            "iso": 6400,
-            "focalLength": "400mm",
-            "capturedAt": "2026-07-13T20:17:05"
           }
         },
         {

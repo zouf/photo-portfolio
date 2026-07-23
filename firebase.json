@@ -4,16 +4,22 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "headers": [
       {
-        "comment": "Hashed Astro assets never change under a given name — cache hard.",
+        "comment": "Firebase applies the LAST matching rule per header key, so the broad no-cache default comes first and the immutable overrides for hashed assets come after. HTML at clean URLs (/, /about) only matches this rule, so it revalidates every load and a redeploy reaches users immediately.",
+        "source": "**",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      },
+      {
+        "comment": "Hashed Astro assets and content-hashed photos never change under a given name — cache hard so repeat visits don't re-download them (matters for the Spark daily transfer limit). These come AFTER ** so they win.",
         "source": "/_astro/**",
         "headers": [
           { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
         ]
       },
       {
-        "comment": "Everything else (HTML at clean URLs, favicon) must revalidate every load, so a redeploy reaches users immediately instead of sitting behind an hour-long cache. A previous rule targeted **/*.html, which clean URLs like / and /about never match, so pages were silently cached for an hour.",
-        "source": "**",
-        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+        "source": "/photos/**",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
       }
     ]
   }

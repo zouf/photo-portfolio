@@ -474,21 +474,13 @@
         },
         {
           "id": "DSC_3268",
-          "thumb": "/photos/stoney-lake/DSC_3268_f6988251_thumb.jpg",
-          "med": "/photos/stoney-lake/DSC_3268_f6988251_med.jpg",
-          "full": "/photos/stoney-lake/DSC_3268_f6988251_full.jpg",
-          "width": 6048,
-          "height": 4032,
+          "thumb": "/photos/stoney-lake/DSC_3268_e5696ac1_thumb.jpg",
+          "med": "/photos/stoney-lake/DSC_3268_e5696ac1_med.jpg",
+          "full": "/photos/stoney-lake/DSC_3268_e5696ac1_full.jpg",
+          "width": 5572,
+          "height": 3773,
           "caption": null,
-          "exif": {
-            "camera": "NIKON Z5 II",
-            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
-            "aperture": "f/7.1",
-            "shutter": "1/3200",
-            "iso": 5000,
-            "focalLength": "245mm",
-            "capturedAt": "2026-07-13T20:11:46"
-          }
+          "exif": {}
         },
         {
           "id": "DSC_3411",

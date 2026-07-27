@@ -11,6 +11,7 @@ const { photos } = Astro.props;
     <figcaption>
       <span id="lb-caption"></span>
       <span id="lb-exif"></span>
+      <span id="lb-filename"></span>
       <a id="lb-full" href="" target="_blank" rel="noopener">View full resolution</a>
     </figcaption>
   </figure>
@@ -22,6 +23,7 @@ const { photos } = Astro.props;
     const img = document.getElementById('lb-img');
     const captionEl = document.getElementById('lb-caption');
     const exifEl = document.getElementById('lb-exif');
+    const filenameEl = document.getElementById('lb-filename');
     const fullEl = document.getElementById('lb-full');
     let current = 0;
 
@@ -50,6 +52,8 @@ const { photos } = Astro.props;
       const line = exifLine(photo.exif ?? {});
       exifEl.textContent = line;
       exifEl.hidden = line === '';
+
+      filenameEl.textContent = photo.id;
 
       fullEl.href = photo.full;
     }
@@ -129,6 +133,13 @@ const { photos } = Astro.props;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #9a9086;
+  }
+
+  #lb-filename {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    color: #6f665d;
   }
 
   #lb-full {

@@ -474,13 +474,16 @@
         },
         {
           "id": "DSC_3268",
-          "thumb": "/photos/stoney-lake/DSC_3268_e5696ac1_thumb.jpg",
-          "med": "/photos/stoney-lake/DSC_3268_e5696ac1_med.jpg",
-          "full": "/photos/stoney-lake/DSC_3268_e5696ac1_full.jpg",
-          "width": 5572,
-          "height": 3773,
+          "thumb": "/photos/stoney-lake/DSC_3268_ec91825a_thumb.jpg",
+          "med": "/photos/stoney-lake/DSC_3268_ec91825a_med.jpg",
+          "full": "/photos/stoney-lake/DSC_3268_ec91825a_full.jpg",
+          "width": 5284,
+          "height": 3576,
           "caption": null,
-          "exif": {}
+          "exif": {
+            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
+            "capturedAt": "2026-07-13T20:11:46"
+          }
         },
         {
           "id": "DSC_3411",

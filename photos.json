@@ -5,12 +5,12 @@
       "title": "Arizona",
       "photos": [
         {
-          "id": "DSC_1466",
-          "thumb": "/photos/arizona/DSC_1466_918d8b70_thumb.jpg",
-          "med": "/photos/arizona/DSC_1466_918d8b70_med.jpg",
-          "full": "/photos/arizona/DSC_1466_918d8b70_full.jpg",
-          "width": 3971,
-          "height": 2647,
+          "id": "DSC_1478",
+          "thumb": "/photos/arizona/DSC_1478_825dc0c4_thumb.jpg",
+          "med": "/photos/arizona/DSC_1478_825dc0c4_med.jpg",
+          "full": "/photos/arizona/DSC_1478_825dc0c4_full.jpg",
+          "width": 6048,
+          "height": 4032,
           "caption": null,
           "exif": {
             "camera": "NIKON Z5 II",
@@ -19,7 +19,7 @@
             "shutter": "1/320",
             "iso": 100,
             "focalLength": "16mm",
-            "capturedAt": "2026-04-05T18:52:42"
+            "capturedAt": "2026-04-05T16:55:32"
           }
         },
         {
@@ -56,6 +56,24 @@
             "iso": 100,
             "focalLength": "30mm",
             "capturedAt": "2026-04-05T19:30:30"
+          }
+        },
+        {
+          "id": "DSC_1530",
+          "thumb": "/photos/arizona/DSC_1530_eb011b4c_thumb.jpg",
+          "med": "/photos/arizona/DSC_1530_eb011b4c_med.jpg",
+          "full": "/photos/arizona/DSC_1530_eb011b4c_full.jpg",
+          "width": 6048,
+          "height": 4032,
+          "caption": null,
+          "exif": {
+            "camera": "NIKON Z5 II",
+            "lens": "TAMRON 16-30mm F2.8 A064 Z",
+            "aperture": "f/2.8",
+            "shutter": "1/1600",
+            "iso": 200,
+            "focalLength": "28mm",
+            "capturedAt": "2026-04-05T17:47:13"
           }
         },
         {

@@ -287,24 +287,6 @@
           }
         },
         {
-          "id": "DSC_1818",
-          "thumb": "/photos/new-york/DSC_1818_44d1f2e5_thumb.jpg",
-          "med": "/photos/new-york/DSC_1818_44d1f2e5_med.jpg",
-          "full": "/photos/new-york/DSC_1818_44d1f2e5_full.jpg",
-          "width": 6048,
-          "height": 4032,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z5 II",
-            "lens": "NIKKOR Z 26mm f/2.8",
-            "aperture": "f/16",
-            "shutter": "1/10",
-            "iso": 100,
-            "focalLength": "26mm",
-            "capturedAt": "2026-04-19T17:29:11"
-          }
-        },
-        {
           "id": "DSC_1960",
           "thumb": "/photos/new-york/DSC_1960_2968215e_thumb.jpg",
           "med": "/photos/new-york/DSC_1960_2968215e_med.jpg",
@@ -320,42 +302,6 @@
             "iso": 100,
             "focalLength": "120mm",
             "capturedAt": "2026-05-10T11:14:06"
-          }
-        },
-        {
-          "id": "DSC_1961",
-          "thumb": "/photos/new-york/DSC_1961_9f162de8_thumb.jpg",
-          "med": "/photos/new-york/DSC_1961_9f162de8_med.jpg",
-          "full": "/photos/new-york/DSC_1961_9f162de8_full.jpg",
-          "width": 6048,
-          "height": 4032,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z5 II",
-            "lens": "NIKKOR Z 24-120mm f/4 S",
-            "aperture": "f/5.6",
-            "shutter": "1/500",
-            "iso": 100,
-            "focalLength": "120mm",
-            "capturedAt": "2026-05-10T11:14:38"
-          }
-        },
-        {
-          "id": "DSC_1962",
-          "thumb": "/photos/new-york/DSC_1962_3584f2d3_thumb.jpg",
-          "med": "/photos/new-york/DSC_1962_3584f2d3_med.jpg",
-          "full": "/photos/new-york/DSC_1962_3584f2d3_full.jpg",
-          "width": 6048,
-          "height": 4032,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z5 II",
-            "lens": "NIKKOR Z 24-120mm f/4 S",
-            "aperture": "f/5.6",
-            "shutter": "1/500",
-            "iso": 100,
-            "focalLength": "65mm",
-            "capturedAt": "2026-05-10T11:15:08"
           }
         },
         {
@@ -401,24 +347,6 @@
           }
         },
         {
-          "id": "DSC_2734",
-          "thumb": "/photos/stoney-lake/DSC_2734_529fe4a0_thumb.jpg",
-          "med": "/photos/stoney-lake/DSC_2734_529fe4a0_med.jpg",
-          "full": "/photos/stoney-lake/DSC_2734_529fe4a0_full.jpg",
-          "width": 5568,
-          "height": 3712,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z50 II",
-            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
-            "aperture": "f/6.3",
-            "shutter": "1/1600",
-            "iso": 2500,
-            "focalLength": "209mm",
-            "capturedAt": "2026-07-14T19:41:09"
-          }
-        },
-        {
           "id": "DSC_2734_bw",
           "thumb": "/photos/stoney-lake/DSC_2734_bw_bc0c3554_thumb.jpg",
           "med": "/photos/stoney-lake/DSC_2734_bw_bc0c3554_med.jpg",
@@ -434,24 +362,6 @@
             "iso": 2500,
             "focalLength": "209mm",
             "capturedAt": "2026-07-14T19:41:09"
-          }
-        },
-        {
-          "id": "DSC_2735",
-          "thumb": "/photos/stoney-lake/DSC_2735_89d0c048_thumb.jpg",
-          "med": "/photos/stoney-lake/DSC_2735_89d0c048_med.jpg",
-          "full": "/photos/stoney-lake/DSC_2735_89d0c048_full.jpg",
-          "width": 5568,
-          "height": 3712,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z50 II",
-            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
-            "aperture": "f/6.3",
-            "shutter": "1/1000",
-            "iso": 1600,
-            "focalLength": "209mm",
-            "capturedAt": "2026-07-14T19:41:15"
           }
         },
         {
@@ -542,24 +452,6 @@
             "iso": 400,
             "focalLength": "400mm",
             "capturedAt": "2026-07-19T10:05:05"
-          }
-        },
-        {
-          "id": "DSC_3127",
-          "thumb": "/photos/stoney-lake/DSC_3127_20e16441_thumb.jpg",
-          "med": "/photos/stoney-lake/DSC_3127_20e16441_med.jpg",
-          "full": "/photos/stoney-lake/DSC_3127_20e16441_full.jpg",
-          "width": 6048,
-          "height": 4032,
-          "caption": null,
-          "exif": {
-            "camera": "NIKON Z5 II",
-            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
-            "aperture": "f/6.3",
-            "shutter": "1/160",
-            "iso": 100,
-            "focalLength": "400mm",
-            "capturedAt": "2026-07-09T20:18:39"
           }
         },
         {
@@ -758,6 +650,48 @@
             "iso": 250,
             "focalLength": "17mm",
             "capturedAt": "2026-07-22T22:04:22"
+          }
+        },
+        {
+          "id": "DSC_3965",
+          "thumb": "/photos/stoney-lake/DSC_3965_65203ea6_thumb.jpg",
+          "med": "/photos/stoney-lake/DSC_3965_65203ea6_med.jpg",
+          "full": "/photos/stoney-lake/DSC_3965_65203ea6_full.jpg",
+          "width": 5293,
+          "height": 3529,
+          "caption": null,
+          "exif": {
+            "camera": "NIKON Z5 II",
+            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
+            "aperture": "f/6.3",
+            "shutter": "1/1600",
+            "iso": 400,
+            "focalLength": "400mm",
+            "capturedAt": "2026-07-25T14:13:36"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "warwick",
+      "title": "Warwick",
+      "photos": [
+        {
+          "id": "DSC_3127",
+          "thumb": "/photos/warwick/DSC_3127_20e16441_thumb.jpg",
+          "med": "/photos/warwick/DSC_3127_20e16441_med.jpg",
+          "full": "/photos/warwick/DSC_3127_20e16441_full.jpg",
+          "width": 6048,
+          "height": 4032,
+          "caption": null,
+          "exif": {
+            "camera": "NIKON Z5 II",
+            "lens": "TAMRON 50-400mm F4.5-6.3 A067 Z",
+            "aperture": "f/6.3",
+            "shutter": "1/160",
+            "iso": 100,
+            "focalLength": "400mm",
+            "capturedAt": "2026-07-09T20:18:39"
           }
         }
       ]

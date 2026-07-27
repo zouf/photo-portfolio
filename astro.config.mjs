@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config';
 
-// Firebase serves the site at <project-id>.web.app until a custom domain is
-// attached. Override with SITE_URL when that changes.
-const site = process.env.SITE_URL ?? 'https://photo-portfolio.web.app';
+// Custom domain: explore.photo (connected via Firebase Hosting). Firebase also
+// keeps serving the site at photo-portfolio-88316.web.app. Override with SITE_URL
+// if needed.
+const site = process.env.SITE_URL ?? 'https://explore.photo';
 
 export default defineConfig({
   site,

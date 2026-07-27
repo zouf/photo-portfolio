@@ -12,7 +12,10 @@ const { photos } = Astro.props;
       <span id="lb-caption"></span>
       <span id="lb-exif"></span>
       <span id="lb-meta"><span id="lb-filename"></span><span id="lb-date"></span></span>
-      <a id="lb-full" href="" target="_blank" rel="noopener">View full resolution</a>
+      <span class="lb-links">
+        <a id="lb-full" href="" target="_blank" rel="noopener">View full resolution</a>
+        <button id="lb-copy" type="button">Copy link</button>
+      </span>
     </figcaption>
   </figure>
 </dialog>
@@ -72,18 +75,38 @@ const { photos } = Astro.props;
       dateEl.hidden = captured === '';
 
       fullEl.href = photo.full;
+
+      // Put the photo id in the URL so it's shareable: whoever opens the link
+      // lands on this exact photo. replaceState (not push) keeps the back button
+      // sane while paging with next/prev.
+      history.replaceState(null, '', `#${photo.id}`);
+    }
+
+    function openAt(index) {
+      show(index);
+      if (!dialog.open) dialog.showModal();
     }
 
     document.querySelectorAll('.tile').forEach((tile) => {
-      tile.addEventListener('click', () => {
-        show(Number(tile.dataset.index));
-        dialog.showModal();
-      });
+      tile.addEventListener('click', () => openAt(Number(tile.dataset.index)));
     });
 
     dialog.querySelector('.close').addEventListener('click', () => dialog.close());
     dialog.querySelector('.prev').addEventListener('click', () => show(current - 1));
     dialog.querySelector('.next').addEventListener('click', () => show(current + 1));
+
+    // Copy a shareable link to the current photo.
+    const copyBtn = dialog.querySelector('#lb-copy');
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(location.href);
+        const original = copyBtn.textContent;
+        copyBtn.textContent = 'Link copied';
+        setTimeout(() => { copyBtn.textContent = original; }, 1500);
+      } catch {
+        copyBtn.textContent = location.href;
+      }
+    });
 
     dialog.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') show(current + 1);
@@ -94,6 +117,25 @@ const { photos } = Astro.props;
     dialog.addEventListener('click', (e) => {
       if (e.target === dialog) dialog.close();
     });
+
+    // Closing clears the photo from the URL so the link points at the album.
+    dialog.addEventListener('close', () => {
+      history.replaceState(null, '', location.pathname + location.search);
+    });
+
+    // Deep-link: open the photo named in the URL hash — but only once the gallery
+    // is unlocked, so a shared link can't bypass the password gate.
+    function openFromHash() {
+      const id = decodeURIComponent(location.hash.replace(/^#/, ''));
+      if (!id) return;
+      if (sessionStorage.getItem('zouf-gallery-unlocked') !== '1') return;
+      const index = photos.findIndex((p) => p.id === id);
+      if (index !== -1) openAt(index);
+    }
+
+    openFromHash();
+    // If the visitor arrives locked, open the linked photo right after they unlock.
+    window.addEventListener('gallery-unlocked', openFromHash);
   })();
 </script>
 
@@ -168,6 +210,30 @@ const { photos } = Astro.props;
     font-size: 0.66rem;
     letter-spacing: 0.05em;
     color: #6f665d;
+  }
+
+  .lb-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  #lb-copy {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9a9086;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  #lb-copy:hover {
+    color: #f0ebe4;
+    border-bottom-color: #9a9086;
   }
 
   #lb-full {

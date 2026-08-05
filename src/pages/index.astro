@@ -5,80 +5,12 @@ import Lightbox from '../components/Lightbox.astro';
 import manifest from '../../photos.json';
 
 const photos = manifest.albums.flatMap((album) => album.photos);
-
-// Homepage hero: the dramatic up-angle saguaro.
-const hero =
-  photos.find((p) => p.id === 'DSC_1478') ??
-  photos.find((p) => p.exif?.camera && p.width > p.height) ??
-  photos[0];
 ---
 
 <Base
   title="Zouf — Photography"
   description="Photographs from the trail, the road, and the water."
 >
-  {
-    hero && (
-      <section class="hero">
-        <img src={hero.med} alt="Saguaro against the desert sky" fetchpriority="high" />
-        <div class="hero-caption">
-          <p class="hero-title">Let's Explore</p>
-          <p class="hero-sub">Photographs from the trail, the road, and the water</p>
-        </div>
-      </section>
-    )
-  }
-
   <MasonryGrid photos={photos} />
   <Lightbox photos={photos} />
 </Base>
-
-<style>
-  .hero {
-    position: relative;
-    margin-bottom: 2rem;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .hero img {
-    display: block;
-    width: 100%;
-    height: clamp(320px, 60vh, 640px);
-    object-fit: cover;
-  }
-
-  .hero-caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 2.5rem 1.75rem 1.5rem;
-    color: #fff;
-    background: linear-gradient(to top, rgba(20, 17, 14, 0.55), rgba(20, 17, 14, 0));
-  }
-
-  .hero-title {
-    margin: 0;
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .hero-sub {
-    margin: 0.35rem 0 0;
-    font-size: 0.85rem;
-    letter-spacing: 0.03em;
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  @media (max-width: 560px) {
-    .hero-title {
-      font-size: 1.1rem;
-    }
-    .hero-sub {
-      font-size: 0.78rem;
-    }
-  }
-</style>
